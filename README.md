@@ -12,7 +12,6 @@ yarn dev
 
 modules  
 ┗ server
-
 ┃ ┗ data
 
 ┃ ┃ ┗ products.json
