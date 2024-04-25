@@ -10,23 +10,20 @@ yarn dev
 
 ## structure folder
 
-modules  
-- server
-- - data
-- - - products.json
-pages
-- api
-- - product
-- - - [id].js
-- - hello.js
-- - products.js
-- index.js
-public
-- favicon.ico
-- vercel.svg
-- .gitignore
-- jsconfig.json
-- package.json
-- README.md
+### modules 
+* server 
+    * data
+        * products.json
+### pages
+* api
+    * product
+        * [id].js
+    * hello.js
+    * products.js
+* index.js
+
+### public
+* favicon.ico
+* vercel.svg
 
 Next Version: 9.4
