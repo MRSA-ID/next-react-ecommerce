@@ -46,3 +46,4 @@ Next Version: 9.4
 - Pre-rendering Nextjs
 - Static Generation with data
 - JSSS (JavaScript Style Sheets)
+- Absolute Path
