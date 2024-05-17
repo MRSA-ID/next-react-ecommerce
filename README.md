@@ -48,3 +48,4 @@ Next Version: 9.4
 - JSSS (JavaScript Style Sheets)
 - Absolute Path
 - Utils Functions
+- dynamic routes, and getStaticPaths
