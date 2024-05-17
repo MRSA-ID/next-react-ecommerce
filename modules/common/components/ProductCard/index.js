@@ -9,7 +9,8 @@ import {
 	CardMedia,
 	Typography,
 } from "@material-ui/core";
-import PromoLabel from "../PromoLabel";
+import PromoLabel from "@common/components/PromoLabel";
+import ProductRating from "@common/components/ProductRating";
 
 const useStyles = makeStyles({
 	card: {
@@ -69,6 +70,10 @@ const ProductCard = ({
 							className={classes.price}>
 							{price}
 						</Typography>
+						<ProductRating
+							rating={rating}
+							sold={sold}
+						/>
 					</Grid>
 				</CardContent>
 			</div>

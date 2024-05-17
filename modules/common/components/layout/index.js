@@ -6,7 +6,7 @@ import MobileHeader from "@mobile/components/Header";
 
 const useStyles = makeStyles({
 	content: {
-		marginTop: 74,
+		marginTop: 90,
 	},
 });
 
