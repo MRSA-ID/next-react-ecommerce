@@ -1,13 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-	makeStyles,
-	Grid,
-	Typography,
-	Grid,
-	Paper,
-	Typography,
-} from "@material-ui/core";
+import { makeStyles, Grid, Typography, Paper } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,6 +21,24 @@ const useStyles = makeStyles((theme) => ({
 const PromoCard = ({ promo }) => {
 	const clasess = useStyles();
 
+	const prettyPromoLabel = (prm) => {
+		let res;
+		switch (prm) {
+			case "CASHBACK":
+				res = "Cashback";
+				break;
+			case "FREESHIPPING":
+				res = "Free Shipping";
+				break;
+			default:
+				res = "Invalid Label";
+		}
+
+		return res;
+	};
+
+	const breakpoints = promo.length > 1 ? 6 : 12;
+
 	if (promo.length > 0) {
 		return (
 			<Grid
@@ -35,11 +46,14 @@ const PromoCard = ({ promo }) => {
 				spacing={1}>
 				{promo.map((prm) => {
 					return (
-						<Grid item>
+						<Grid
+							item
+							xs={breakpoints}
+							sm={breakpoints}>
 							<Paper
 								variant="outlined"
 								classes={{ root: clasess.root }}>
-								<Typography>{prm}</Typography>
+								<Typography>{prettyPromoLabel(prm)}</Typography>
 							</Paper>
 						</Grid>
 					);
@@ -51,7 +65,7 @@ const PromoCard = ({ promo }) => {
 	}
 };
 
-promoCard.PropTypes = {
+PromoCard.PropTypes = {
 	promo: PropTypes.array.isRequired,
 };
 

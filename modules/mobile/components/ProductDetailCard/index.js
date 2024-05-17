@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
 	Typography,
@@ -16,6 +16,7 @@ import clsx from "clsx";
 
 import ProductRating from "@common/components/ProductRating";
 import { currencyFormatter } from "@utils/currency";
+import PromoCard from "@common/components/PromoCard";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -27,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 	productInfo: {
 		marginTop: theme.spacing(2),
+	},
+	expand: {
+		transform: "rotate(0deg)",
+		transition: theme.transitions.create("transform", {
+			duration: theme.transitions.duration.shortest,
+		}),
+	},
+	expandOpen: {
+		transform: "rotate(180deg)",
 	},
 }));
 
@@ -43,6 +53,12 @@ const ProductDetailCard = ({
 	promo,
 }) => {
 	const classes = useStyles();
+	const [expanded, setExpand] = useState(true);
+
+	const handleExpandClick = () => {
+		setExpand(!expanded);
+	};
+
 	return (
 		<div className={classes.container}>
 			<Card>
@@ -163,7 +179,39 @@ const ProductDetailCard = ({
 						</Grid>
 					</Grid>
 				</CardContent>
+				<CardActions>
+					<Grid
+						container
+						justifyContent="center"
+						alignItems="center">
+						<IconButton
+							className={clsx(classes.expand, {
+								[classes.expandOpen]: expanded,
+							})}
+							onClick={handleExpandClick}>
+							<ExpandMore />
+						</IconButton>
+					</Grid>
+				</CardActions>
+				<Collapse
+					in={expanded}
+					timeout="auto"
+					unmountOnExit>
+					<CardContent>
+						<Typography
+							paragraph
+							variant="subtitle2">
+							Deskripsi
+						</Typography>
+						<Typography
+							paragraph
+							variant="body2">
+							{description}
+						</Typography>
+					</CardContent>
+				</Collapse>
 			</Card>
+			<PromoCard promo={promo} />
 		</div>
 	);
 };
