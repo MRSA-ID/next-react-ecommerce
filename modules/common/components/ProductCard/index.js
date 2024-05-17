@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import link from "next/link";
+import Link from "next/link";
 import {
 	makeStyles,
 	Grid,
@@ -44,41 +44,45 @@ const ProductCard = ({
 }) => {
 	const classes = useStyles();
 	return (
-		<Card>
-			<div className={classes.card}>
-				<div className={classes.relative}>
-					<CardMedia
-						className={classes.image}
-						image={img}
-						title={title}
-					/>
-					<div className={classes.promoLabel}>
-						<PromoLabel promoLabel={promoLabel} />
-					</div>
-				</div>
-				<CardContent>
-					<Grid
-						container
-						direction="column">
-						<Typography
-							gutterBottom
-							variant="subtitle2"
-							component="h2">
-							{title}
-						</Typography>
-						<Typography
-							variant="overline"
-							className={classes.price}>
-							{currencyFormatter(price)}
-						</Typography>
-						<ProductRating
-							rating={rating}
-							sold={sold}
+		<Link
+			href={"product/[id]"}
+			as={`product/${productID}`}>
+			<Card>
+				<div className={classes.card}>
+					<div className={classes.relative}>
+						<CardMedia
+							className={classes.image}
+							image={img}
+							title={title}
 						/>
-					</Grid>
-				</CardContent>
-			</div>
-		</Card>
+						<div className={classes.promoLabel}>
+							<PromoLabel promoLabel={promoLabel} />
+						</div>
+					</div>
+					<CardContent>
+						<Grid
+							container
+							direction="column">
+							<Typography
+								gutterBottom
+								variant="subtitle2"
+								component="h2">
+								{title}
+							</Typography>
+							<Typography
+								variant="overline"
+								className={classes.price}>
+								{currencyFormatter(price)}
+							</Typography>
+							<ProductRating
+								rating={rating}
+								sold={sold}
+							/>
+						</Grid>
+					</CardContent>
+				</div>
+			</Card>
+		</Link>
 	);
 };
 
