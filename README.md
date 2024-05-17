@@ -47,3 +47,4 @@ Next Version: 9.4
 - Static Generation with data
 - JSSS (JavaScript Style Sheets)
 - Absolute Path
+- Utils Functions

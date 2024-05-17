@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import PromoLabel from "@common/components/PromoLabel";
 import ProductRating from "@common/components/ProductRating";
+import { currencyFormatter } from "@utils/currency";
 
 const useStyles = makeStyles({
 	card: {
@@ -68,7 +69,7 @@ const ProductCard = ({
 						<Typography
 							variant="overline"
 							className={classes.price}>
-							{price}
+							{currencyFormatter(price)}
 						</Typography>
 						<ProductRating
 							rating={rating}
