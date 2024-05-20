@@ -37,7 +37,13 @@ const ProductDetail = ({ product }) => {
 };
 
 export async function getStaticPaths() {
-	// const res = await fetch("http://localhost:3000/api/products");
+	const res = await fetch(
+		`${
+			process.env.NODE_ENV === "development"
+				? "http://localhost:3000"
+				: process.env.API_URI
+		}/api/products`
+	);
 	const products = await res.json();
 
 	const paths = products.list.map((prod) => `/product/${prod.id}`);
@@ -46,7 +52,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	// const res = await fetch(`http://localhost:3000/api/product/${params.id}`);
+	const res = await fetch(
+		`${
+			process.env.NODE_ENV === "development"
+				? "http://localhost:3000"
+				: process.env.API_URI
+		}/api/product/${params.id}`
+	);
 	const product = await res.json();
 
 	return {

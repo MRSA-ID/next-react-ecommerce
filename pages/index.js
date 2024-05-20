@@ -36,7 +36,13 @@ const HomePage = ({ products }) => {
 };
 
 export async function getStaticProps() {
-	// const res = await fetch("http://localhost:3000/api/products");
+	const res = await fetch(
+		`${
+			process.env.NODE_ENV === "development"
+				? "http://localhost:3000"
+				: process.env.API_URI
+		}/api/products`
+	);
 	const products = await res.json();
 
 	return {
